@@ -119,14 +119,188 @@
             font-size: 0.95rem;
         }
         footer {
-            background: linear-gradient(135deg, #2E7D32, #1B5E20);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
+            background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+            color: #fff;
+            padding: 60px 0 20px;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
-        footer p {
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+        }
+        .footer-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .footer-section h3 {
+            margin: 0 0 12px 0;
+            color: #c8f1c8;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: slideIn 0.6s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section li {
             margin-bottom: 8px;
+        }
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .footer-section a:hover {
+            color: #c8f1c8;
+            transform: translateX(4px);
+            text-decoration: underline;
+        }
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.95);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .social-icons a:hover {
+            background: #4CAF50;
+            border-color: #4CAF50;
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+        }
+        .newsletter-form input::placeholder {
+            color: #999;
+        }
+        .newsletter-form button {
+            padding: 10px 18px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .newsletter-form button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        .back-to-top.show {
+            display: flex;
+        }
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .footer-bottom p {
+            margin: 5px 0;
+        }
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 0 20px;
+            }
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-bottom: 30px;
+                padding-bottom: 30px;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+            .newsletter-form input {
+                min-width: 100%;
+            }
+            .newsletter-form button {
+                width: 100%;
+            }
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
         }
         .navbar-nav .nav-link {
             transition: all 0.3s ease;
@@ -262,12 +436,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>About Our Advocacy</h2>
-                    <p>Tree planting is one of the most effective ways to com bat climate change, restore biodiversity, and improve air quality. Our initiative brings together volunteers, communities, and organizations to plant millions of trees worldwide.</p>
-                    <p>By participating, you're not just planting trees – you're investing in a sustainable future for generations to come.</p>
+                    <h2>‎Plant Treegether – Tree Planting Advocacy</h2>
+                    <p>Plant Treegether is an environmental advocacy that encourages people to work together in planting trees to help protect and restore nature. The main goal of this advocacy is to increase the number of trees in different communities in order to reduce pollution, prevent flooding, and help fight climate change. Trees play an important role in keeping the environment healthy because they provide clean air, shade, and a habitat for animals..</p>
+                    <p>‎Through this advocacy, students, youth, and community members are encouraged to participate in tree-planting activities and become more aware of the importance of caring for the environment. Plant Treegether promotes teamwork, responsibility, and love for nature by inspiring people to take simple actions that can create a big impact on the planet.
+‎
+‎By planting trees today, we are helping protect the Earth for the future generations. This advocacy reminds everyone that small efforts, when done together, can lead to a greener, cleaner, and healthier world. 🌱🌳
+‎</p>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://www.plt.org/wp-content/uploads/2018/04/shutterstock_683779825.jpg" alt="Tree Planting" class="img-fluid rounded">
+                    <img src="q.jpg" alt="Tree Planting" class="img-fluid rounded">
                 </div>
             </div>
         </div>
@@ -279,7 +456,7 @@
             <div class="video-container">
                 <!-- Replace the src with your video URL -->
                 <video controls poster="https://via.placeholder.com/800x450/4CAF50/FFFFFF?text=Video+Thumbnail">
-                    <source src="<iframe width="1017" height="572" src="https://www.youtube.com/embed/F3G023pM3z0?list=RDOhf3czrhCSY" title="Tensionado (Live at The Cozy Cove) - Soapdish" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" type="video/mp4">
+                    <source src="TREE.mp4" title="Tensionado (Live at The Cozy Cove) - Soapdish" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -311,7 +488,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="advocacy-card">
-                        <img src="https://www.fao.org/images/newsroomlibraries/stories-images/abafb0d391e87adc057df2d95333298c.jpg?sfvrsn=13fcd72b_10" alt="Advocacy 3" class="advocacy-card-img">
+                        <img src="tanim.jpg" alt="Advocacy 3" class="advocacy-card-img">
                         <div class="advocacy-card-body">
                             <h3 class="advocacy-card-title">Community Education</h3>
                             <p class="advocacy-card-description">Educating communities about the importance of trees and environmental sustainability.</p>
@@ -331,7 +508,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="advocacy-card">
-                        <img src="https://www.undp.org/sites/g/files/zskgke326/files/2024-10/311875193_479988010825135_4336934698937858680_n.jpg" alt="Advocacy 5" class="advocacy-card-img">
+                        <img src="YOUTH.jpg" alt="Advocacy 5" class="advocacy-card-img">
                         <div class="advocacy-card-body">
                             <h3 class="advocacy-card-title">Youth Empowerment</h3>
                             <p class="advocacy-card-description">Inspiring young people to become environmental champions and leaders in sustainability.</p>
@@ -363,7 +540,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="member-card">
-                        <img src="https://via.placeholder.com/300x300/4CAF50/FFFFFF?text=Member+2" alt="Member 2" class="member-img">
+                        <img src="LHU.jpg" alt="Member 2" class="member-img">
                         <h5 class="member-name">Lhucky</h5>
                     </div>
                 </div>
@@ -393,7 +570,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="member-card">
-                        <img src="https://via.placeholder.com/300x300/4CAF50/FFFFFF?text=Member+7" alt="Member 7" class="member-img">
+                        <img src="J.jpg" alt="Member 7" class="member-img">
                         <h5 class="member-name">Jocelle</h5>
                     </div>
                 </div>
@@ -401,14 +578,82 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 TreeGether. All rights reserved.</p>
-            <p>Small Seeds, Big Change</p>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+        <div class="footer-main">
+            <!-- Brand Section -->
+            <div class="footer-section">
+                <h3>🌱 Plant Treegether</h3>
+                <p>Small Seeds, Big Change — Together we can reforest the planet and combat climate change. Join our mission today!</p>
+                <div class="social-icons">
+                    <a href="#" title="Facebook" aria-label="Follow us on Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99h-2.54V12h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.25c-1.23 0-1.61.77-1.61 1.56v1.87h2.74l-.44 2.9h-2.3V21.9C18.34 21.13 22 17 22 12z"/></svg>
+                    </a>
+                    <a href="#" title="Twitter" aria-label="Follow us on Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    </a>
+                    <a href="#" title="Instagram" aria-label="Follow us on Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+                    </a>
+                </div>
+            </div>
 
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>📍 Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#video">Our Video</a></li>
+                    <li><a href="#impact">Advocacy</a></li>
+                    <li><a href="#contact">Our Team</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Section -->
+            <div class="footer-section">
+                <h3>📨 Newsletter</h3>
+                <p>Subscribe to get updates on our tree-planting initiatives and environmental news.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="footer-section">
+                <h3>📞 Contact Us</h3>
+                <p><strong>Phone:</strong><br>+63 99999999</p>
+                <p><strong>Email:</strong><br>treegether@gmail.com</p>
+                <p><strong>School:</strong><br>Buting Senior High School</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2026 Plant Treegether. All rights reserved.</p>
+            <p style="font-size: 0.85rem; margin-top: 8px;">Committed to environmental conservation and sustainable development.</p>
+        </div>
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+<script>
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
